@@ -11,8 +11,7 @@ RUN \
 	apt-get clean && rm -rf /var/lib/apt/lists/* && \
 	useradd -ms /bin/bash freegeoip
 
-ARG INITIAL_DATABASE_URL
-ENV INITIAL_DATABASE_URL=${INITIAL_DATABASE_URL}
+ENV INITIAL_DATABASE_URL="https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&suffix=tar.gz&license_key=rBO8wdsmoDkVNFkE"
 
 USER freegeoip
 ENTRYPOINT ["/go/bin/freegeoip"]
