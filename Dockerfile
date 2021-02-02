@@ -12,11 +12,9 @@ RUN \
 	useradd -ms /bin/bash freegeoip
 
 ENV INITIAL_DATABASE_URL="https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&suffix=tar.gz&license_key=rBO8wdsmoDkVNFkE"
-
 USER freegeoip
-ENTRYPOINT ["/go/bin/freegeoip"]
+ENTRYPOINT /go/bin/freegeoip -http=:${PORT:-8080}
 
-EXPOSE 8080
 
 # CMD instructions:
 # Add  "-use-x-forwarded-for"      if your server is behind a reverse proxy
