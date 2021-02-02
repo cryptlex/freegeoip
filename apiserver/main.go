@@ -43,6 +43,9 @@ func Run() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	if c.ServerAddr == ":" {
+		c.ServerAddr = ":8080"
+	}
 	if c.ServerAddr != "" {
 		go runServer(c, f)
 	}

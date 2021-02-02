@@ -14,9 +14,8 @@ RUN \
 ENV INITIAL_DATABASE_URL="https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&suffix=tar.gz&license_key=rBO8wdsmoDkVNFkE"
 
 USER freegeoip
-ENTRYPOINT ["/go/bin/freegeoip"]
 
-EXPOSE 8080
+CMD export FREEGEOIP_HTTP=:$PORT && /go/bin/freegeoip
 
 # CMD instructions:
 # Add  "-use-x-forwarded-for"      if your server is behind a reverse proxy
