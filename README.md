@@ -56,20 +56,20 @@ See the [Server Options](#serveroptions) section below for more information on c
 
 For automation, check out the [freegeoip chef cookbook](https://supermarket.chef.io/cookbooks/freegeoip) or the (legacy) [Ansible Playbook](./cmd/freegeoip/ansible-playbook) for Ubuntu 14.04 LTS.
 
-<a name="serveroptions">
+<a name="serveroptions"></a>
 
 ### Server Options
 
 To see all the available options, use the `-help` option:
 
 ```bash
-docker run --rm -it cryptlex/freegeoip -help
+docker run --rm -it cryptlex/freegeoip /go/bin/freegeoip -help
 ```
 
 If you're using LetsEncrypt.org to provision your TLS certificates, you have to listen for HTTPS on port 443. Following is an example of the server listening on 3 different ports: metrics + pprof (8888), http (80), and https (443):
 
 ```bash
-docker run -p 8888:8888 -p 80:8080 -p 443:8443 -d cryptlex/freegeoip \
+docker run -p 8888:8888 -p 80:8080 -p 443:8443 -d cryptlex/freegeoip /go/bin/freegeoip \
 	-internal-server=:8888 \
 	-http=:8080 \
 	-https=:8443 \
@@ -146,7 +146,7 @@ Both are disabled by default, but can be enabled by passing the `-internal-serve
 
 HTTP pprof is available at `/debug/pprof` and the examples from the [pprof](https://golang.org/pkg/net/http/pprof/) package documentation should work on the freegeiop web server.
 
-<a name="packagefreegeoip">
+<a name="packagefreegeoip"></a>
 
 ## Package freegeoip
 
